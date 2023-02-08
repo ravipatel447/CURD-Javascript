@@ -38,10 +38,10 @@ btns.addEventListener("click", (e) => {
   } else if (e.target.classList.contains("submit")) {
     const product = getData();
     let abc = products.find((product) => product.productId === pId);
-    abc.productId = product.productId;
+    abc.productId = Number(product.productId);
     abc.productImageSrc = product.productImageSrc;
     abc.productName = product.productName;
-    abc.productPrice = product.productPrice;
+    abc.productPrice = Number(product.productPrice);
     abc.productDesc = product.productDesc;
     window.localStorage.setItem("products", JSON.stringify(products));
     window.location.replace("/index.html");

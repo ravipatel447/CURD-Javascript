@@ -5,7 +5,7 @@ const createProduct = document.querySelector(".createProduct");
 const modal = document.querySelector(".modal--createProduct");
 const btns = document.querySelector(".button--wrapper");
 const overlay = document.querySelector(".overlay");
-let products = JSON.parse(window.localStorage.getItem("products"));
+let products = JSON.parse(window.localStorage.getItem("products")) || [];
 const rendar = ({
   productId,
   productName,
@@ -29,7 +29,7 @@ const rendar = ({
   </tr>`;
   document.querySelector(".table").insertAdjacentHTML("beforeend", html);
 };
-function rendarProducts() {
+function rendarProducts(products) {
   document.querySelector(".table").innerHTML = `
   <tr>
     <th>Product Id</th>
@@ -44,22 +44,10 @@ function rendarProducts() {
     rendar(product);
   });
 }
-rendarProducts();
+rendarProducts(products);
 createProductBtn.addEventListener("click", () => {
-  // console.log(window.location);
   window.location.replace("/createProduct.html");
 });
-// btns.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (e.target.classList.contains("cancel")) {
-//     modal.style.display = "none";
-//   } else if (e.target.classList.contains("submit")) {
-//     const product = getData();
-//     products.push(product);
-//     rendarProducts();
-//     modal.style.display = "none";
-//   }
-// });
 
 function getData() {
   const productId = document.querySelector("#product--id").value;
@@ -70,22 +58,52 @@ function getData() {
   return { productId, productName, productImageSrc, productPrice, productDesc };
 }
 
-// createProduct.addEventListener("click", (e) => {
-//   e.stopPropagation();
-// });
-// overlay.addEventListener("click", () => {
-//   modal.style.display = "none";
-// });
-
 function deleteProduct(id) {
-  console.log(id);
   products = products.filter((product) => product.productId != id);
   window.localStorage.setItem("products", JSON.stringify(products));
-  rendarProducts();
+  rendarProducts(products);
 }
 function editProduct(id) {
   window.location.replace(`/editProduct.html?id=${id}`);
 }
 function viewProduct(id) {
   window.location.replace(`/viewProduct.html?id=${id}`);
+}
+
+function sortProducts(sortBy, type) {
+  let tempsort;
+  if (type === "asc") {
+    switch (sortBy) {
+      case "productId":
+        tempsort = [...products].sort((a, b) => a.productId - b.productId);
+        break;
+      case "productName":
+        tempsort = [...products].sort((a, b) =>
+          a.productName.localeCompare(b.productName)
+        );
+        break;
+      case "productPrice":
+        tempsort = [...products].sort(
+          (a, b) => a.productPrice - b.productPrice
+        );
+        break;
+    }
+  } else if (type === "dsc") {
+    switch (sortBy) {
+      case "productId":
+        tempsort = [...products].sort((a, b) => b.productId - a.productId);
+        break;
+      case "productName":
+        tempsort = [...products].sort((a, b) =>
+          b.productName.localeCompare(a.productName)
+        );
+        break;
+      case "productPrice":
+        tempsort = [...products].sort(
+          (a, b) => b.productPrice - a.productPrice
+        );
+        break;
+    }
+  }
+  rendarProducts(tempsort);
 }

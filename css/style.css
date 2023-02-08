@@ -57,13 +57,10 @@ tr {
   text-align: center;
   height: 40px;
 }
-th {
-  border: 1px solid black;
-}
 td,
 th {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .modal--createProduct {
   transition: 1s;
