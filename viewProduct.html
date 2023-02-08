@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Product</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="modal--createProduct">
+      <div class="overlay">
+        <div class="createProduct">
+          <form action="">
+            <div class="input--wrapper">
+              <label for="">Product Id</label>
+              <input
+                type="number"
+                name="id"
+                id="product--id"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="input--wrapper">
+              <label for="">Product Name</label>
+              <input
+                type="text"
+                name="Name"
+                id="product--name"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="input--wrapper">
+              <label for="">Product Image(url)</label>
+              <input
+                type="url"
+                name="URL"
+                id="product--url"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="input--wrapper">
+              <label for="">Product Price</label>
+              <input
+                type="number"
+                name="Price"
+                id="product--price"
+                value=""
+                disabled
+              />
+            </div>
+            <div class="input--wrapper">
+              <label for="">Product Description</label>
+              <textarea
+                disabled
+                name="Description"
+                id="product--Description"
+                cols="30"
+                rows="6"
+                value=""
+              ></textarea>
+            </div>
+            <div class="button--wrapper">
+              <button class="btn submit" type="submit">Back</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./js/viewProduct.js"></script>
+  </body>
+</html>
