@@ -151,4 +151,23 @@ textarea:focus {
 }
 .accessibility {
   padding: 3px;
+  width: 28%;
+}
+.sortable{
+  cursor: pointer;
+}
+.productId{
+  width: 8%;
+}
+.productName{
+  width: 17%;
+}
+.price{
+  width: 10%;
+}
+.description{
+  width: 20%;
+}
+.capitalize{
+  text-transform: capitalize;
 }

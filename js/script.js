@@ -16,12 +16,12 @@ const rendar = ({
 }) => {
   var html = `<tr>
     <td>${productId}</td>
-    <td>${productName}</td>
+    <td class="capitalize">${productName}</td>
     <td>
         <img src="${productImageSrc}"/>
     </td>
     <td>${productPrice}$</td>
-    <td>${productDesc}</td>
+    <td class="capitalize">${productDesc}</td>
     <td class="accessibility">
       <button class="btn view" onClick="viewProduct(${productId})">View</button>
       <button class="btn edit" onClick="editProduct(${productId})">Edit</button>
