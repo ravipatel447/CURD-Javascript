@@ -57,7 +57,7 @@ renderProducts(products); // first time rendering products
 
 /////////////////////////////// redirecting to createproduct.html ///////////////////////////////////
 createProductBtn.addEventListener("click", () => {
-  window.location.replace("/createProduct.html");
+  window.location.replace("createProduct.html");
 });
 
 //////////////////////////////// deleting one product by id //////////////////////////////////////////
