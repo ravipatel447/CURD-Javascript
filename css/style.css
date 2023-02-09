@@ -49,7 +49,7 @@ body {
 table {
   width: 100%;
 }
-tr:first-child {
+.header {
   background: var(--gradient-primary);
   background-color: #39b385;
 }
@@ -86,7 +86,7 @@ th {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 60%;
+  height: 70%;
   width: 40%;
   color: black;
   background-color: white;

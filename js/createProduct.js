@@ -20,7 +20,7 @@ btns.addEventListener("click", (e) => {
     window.location.replace("/index.html");
   } else if (e.target.classList.contains("submit")) {
     const product = getData();
-    const currentProducts = JSON.parse(window.localStorage.getItem("products"));
+    const currentProducts = JSON.parse(window.localStorage.getItem("products"))||[];
     currentProducts.push(product);
     window.localStorage.setItem("products", JSON.stringify(currentProducts));
     window.location.replace("/index.html");

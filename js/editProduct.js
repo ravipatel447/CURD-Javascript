@@ -25,7 +25,7 @@ function getData() {
   const productDesc = document.querySelector("#product--Description").value;
   return { productId, productName, productImageSrc, productPrice, productDesc };
 }
-const products = JSON.parse(window.localStorage.getItem("products"));
+const products = JSON.parse(window.localStorage.getItem("products"))||[];
 let [, pId] = window.location.search.split("=");
 pId = Number(pId);
 const [product] = products.filter((product) => product.productId === pId);

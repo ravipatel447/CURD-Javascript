@@ -17,7 +17,7 @@ function setData({
   document.querySelector("#product--price").value = productPrice;
   document.querySelector("#product--Description").value = productDesc;
 }
-const products = JSON.parse(window.localStorage.getItem("products"));
+const products = JSON.parse(window.localStorage.getItem("products"))||[];
 let [, pId] = window.location.search.split("=");
 pId = Number(pId);
 const [product] = products.filter((product) => product.productId === pId);
