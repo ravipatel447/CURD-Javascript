@@ -7,6 +7,8 @@ const btns = document.querySelector(".button--wrapper");
 const overlay = document.querySelector(".overlay");
 const tableHeader = document.querySelector(".header");
 let products = JSON.parse(window.localStorage.getItem("products")) || [];
+let selectId = document.querySelector("#selectId");
+let search = document.querySelector("#search");
 const rendar = ({
   productId,
   productName,
@@ -30,12 +32,25 @@ const rendar = ({
   </tr>`;
   document.querySelector(".table").insertAdjacentHTML("beforeend", html);
 };
-function rendarProducts(products) {
+
+function renderOptions() {
+  document.querySelector("#selectId").innerHTML =
+    '<option value="all">All</option>';
+  const arr = products.map((product) => product.productId);
+  arr.forEach((Id) => {
+    document
+      .querySelector("#selectId")
+      .insertAdjacentHTML("beforeend", `<option value=${Id}>${Id}</option>`);
+  });
+}
+
+function rendarProducts(Currentproducts) {
   document.querySelector(".table").innerHTML = ``;
-  products.forEach((product) => {
+  Currentproducts.forEach((product) => {
     rendar(product);
   });
 }
+renderOptions();
 rendarProducts(products);
 createProductBtn.addEventListener("click", () => {
   window.location.replace("/createProduct.html");
@@ -53,6 +68,7 @@ function getData() {
 function deleteProduct(id) {
   products = products.filter((product) => product.productId != id);
   window.localStorage.setItem("products", JSON.stringify(products));
+  renderOptions();
   rendarProducts(products);
 }
 function editProduct(id) {
@@ -100,59 +116,50 @@ function sortProducts(sortBy, type) {
   rendarProducts(tempsort);
 }
 
-// document.querySelectorAll('.sortable').forEach((e)=>{
-//   e.addEventListener('click',()=>{
-//     if(e.classList.contains('asc')||e.classList.contains('desc')){
-//       if(e.classList.contain('asc')){
-//         e.classList.remove('asc');
-//         e.classList.add('desc');
-//         e.innerHTML = e.dataset['desc'];
-//         sortProducts(e.dataset['desc'],"desc");
-//       }
-//       else{
-//         e.classList.remove('desc');
-//         e.classList.add('asc');
-//         e.innerHTML = e.dataset['asc'];
-//         sortProducts(e.dataset['asc'],"asc");
-//       }
-//     }
-//     else{
-//       document.querySelectorAll('.sortable').forEach((ele)=>{
-//         ele.classList.remove('asc');
-//         ele.classList.remove('desc');
-//         ele.innerHTML = e.dataset['original'];
-//       })
-//       e.classList.add('asc');
-//       e.innerHTML = e.dataset['asc'];
-//       sortProducts(e.dataset['asc'],"asc")
-//     }
-//   })
-// })
-
-
-tableHeader.addEventListener('click',(e)=>{
-  if( e.target.classList.contains('sortable')  &&(e.target.classList.contains('asc')|| e.target.classList.contains('desc'))){
-    if(e.target.classList.contains('asc')){
-      e.target.classList.remove('asc');
-      e.target.classList.add('desc');
-      e.target.innerHTML = e.target.dataset['desc'];
-      sortProducts(e.target.dataset['original'],"desc");
+tableHeader.addEventListener("click", (e) => {
+  if (
+    e.target.classList.contains("sortable") &&
+    (e.target.classList.contains("asc") || e.target.classList.contains("desc"))
+  ) {
+    if (e.target.classList.contains("asc")) {
+      e.target.classList.remove("asc");
+      e.target.classList.add("desc");
+      e.target.innerHTML = e.target.dataset["desc"];
+      sortProducts(e.target.dataset["original"], "desc");
+    } else {
+      e.target.classList.remove("desc");
+      e.target.classList.add("asc");
+      e.target.innerHTML = e.target.dataset["asc"];
+      sortProducts(e.target.dataset["original"], "asc");
     }
-    else{
-      e.target.classList.remove('desc');
-      e.target.classList.add('asc');
-      e.target.innerHTML = e.target.dataset['asc'];
-      sortProducts(e.target.dataset['original'],"asc");
-    }
-  }else if(e.target.classList.contains('sortable')){
-    const allSortable = e.target.closest('.header').querySelectorAll('.sortable');
-    allSortable.forEach((e)=>{
-      e.classList.remove('asc');
-      e.classList.remove('desc');
-      e.innerHTML = e.dataset['original'];
+  } else if (e.target.classList.contains("sortable")) {
+    const allSortable = e.target
+      .closest(".header")
+      .querySelectorAll(".sortable");
+    allSortable.forEach((e) => {
+      e.classList.remove("asc");
+      e.classList.remove("desc");
+      e.innerHTML = e.dataset["original"];
     });
-    e.target.classList.add('asc');
-    e.target.innerHTML = e.target.dataset['asc'];
-    sortProducts(e.target.dataset['original'],"asc")
+    e.target.classList.add("asc");
+    e.target.innerHTML = e.target.dataset["asc"];
+    sortProducts(e.target.dataset["original"], "asc");
   }
-})
+});
+selectId.addEventListener("change", () => {
+  console.log(selectId.value);
+  if (selectId.value == "all") {
+    rendarProducts(products);
+  } else {
+    tempproduct = [...products].filter(
+      (product) => product.productId === Number(selectId.value)
+    );
+    rendarProducts(tempproduct);
+  }
+});
+search.addEventListener("keyup", () => {
+  tempproduct = [...products].filter((product) =>
+    product.productName.toLowerCase().includes(search.value.toLowerCase())
+  );
+  rendarProducts(tempproduct);
+});

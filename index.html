@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CURD Operation</title>
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
+    <!-- <img src="https://img.icons8.com/external-outline-black-m-oki-orlando/32/000000/external-crud-database-outline-outline-black-m-oki-orlando.png"/> -->
     <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
@@ -19,20 +21,58 @@
       <div class="button-wrapper">
         <button class="btn cProduct">Create Product</button>
       </div>
+      <div class="filter">
+        <div class="filterById">
+          <div>
+            <label for="cars">Filter By Id:</label>
+          </div>
+          <div>
+            <select name="cars" id="selectId"></select>
+          </div>
+        </div>
+        <div class="filterByName">
+          <div>
+            <label for="cars">Filter by Name:</label>
+          </div>
+          <div>
+            <input type="text" name="search" id="search" />
+          </div>
+        </div>
+      </div>
       <div class="table-wrapper">
         <table class="tableW">
           <tbody>
             <tr class="header">
-              <th class="sortable productId" data-original="Product Id" data-asc="Product Id  &nbsp; &#8595;" data-desc="Product Id  &nbsp; &#8593;">Product Id</th>
-              <th class="sortable productName" data-original="Product Name" data-asc="Product Name  &nbsp; &#8595;" data-desc="Product Name  &nbsp; &#8593;">Product Name</th>
+              <th
+                class="sortable productId"
+                data-original="Product Id"
+                data-asc="Product Id  &nbsp; &#8595;"
+                data-desc="Product Id  &nbsp; &#8593;"
+              >
+                Product Id
+              </th>
+              <th
+                class="sortable productName"
+                data-original="Product Name"
+                data-asc="Product Name  &nbsp; &#8595;"
+                data-desc="Product Name  &nbsp; &#8593;"
+              >
+                Product Name
+              </th>
               <th>Image</th>
-              <th class="sortable price" data-original="Price" data-asc="Price  &nbsp; &#8595;" data-desc="Price  &nbsp; &#8593;">Price</th>
+              <th
+                class="sortable price"
+                data-original="Price"
+                data-asc="Price  &nbsp; &#8595;"
+                data-desc="Price  &nbsp; &#8593;"
+              >
+                Price
+              </th>
               <th class="description">Description</th>
               <th>accessibility</th>
             </tr>
           </tbody>
-          <tbody class="table">
-          </tbody>
+          <tbody class="table"></tbody>
         </table>
       </div>
     </div>

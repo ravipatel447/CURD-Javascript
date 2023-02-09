@@ -5,12 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Product</title>
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon" />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <div class="modal--createProduct">
       <div class="overlay">
         <div class="createProduct">
+          <div class="image--wrapper">
+            <img src="" alt="product_Img" id="product--img" />
+            <!-- <input
+              type="url"
+              name="URL"
+              id="product--url"
+              value=""
+              disabled
+            /> -->
+          </div>
           <form action="">
             <div class="input--wrapper">
               <label for="">Product Id</label>
@@ -28,16 +39,6 @@
                 type="text"
                 name="Name"
                 id="product--name"
-                value=""
-                disabled
-              />
-            </div>
-            <div class="input--wrapper">
-              <label for="">Product Image(url)</label>
-              <input
-                type="url"
-                name="URL"
-                id="product--url"
                 value=""
                 disabled
               />

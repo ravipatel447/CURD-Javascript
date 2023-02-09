@@ -32,6 +32,8 @@ body {
   align-items: center;
 }
 .btn {
+  cursor: pointer;
+  color: hsl(205deg, 25%, 23%);
   padding: 10px 20px;
   border-radius: 8px;
   outline: none;
@@ -47,6 +49,7 @@ body {
   width: 80%;
 }
 table {
+  color: hsl(205deg, 25%, 23%);
   width: 100%;
 }
 .header {
@@ -59,7 +62,7 @@ tr {
 }
 td,
 th {
-  border: 1px solid black;
+  border: 1px solid hsl(205deg, 25%, 23%);
   border-radius: 8px;
 }
 .modal--createProduct {
@@ -153,21 +156,49 @@ textarea:focus {
   padding: 3px;
   width: 28%;
 }
-.sortable{
+.sortable {
   cursor: pointer;
 }
-.productId{
+.productId {
   width: 8%;
 }
-.productName{
+.productName {
   width: 17%;
 }
-.price{
+.price {
   width: 10%;
 }
-.description{
+.description {
   width: 20%;
 }
-.capitalize{
+.capitalize {
   text-transform: capitalize;
+}
+.filter {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.filterById div,
+.filterByName div {
+  color: hsl(205deg, 25%, 23%);
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: row;
+}
+#selectId,
+#search {
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  height: 35px;
+  border: 1px solid var(--color-primary);
+  border-radius: 5px;
+}
+#product--img {
+  border: 2px solid var(--color-secondary-darker);
+  border-radius: 5px;
+  width: 160px;
+  height: 160px;
 }
