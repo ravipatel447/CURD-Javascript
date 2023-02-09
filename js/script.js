@@ -66,10 +66,13 @@ function getData() {
 }
 
 function deleteProduct(id) {
-  products = products.filter((product) => product.productId != id);
-  window.localStorage.setItem("products", JSON.stringify(products));
-  renderOptions();
-  rendarProducts(products);
+  if (window.confirm(`Are you sure you want to delete product Id ${id}`)) {
+    products = products.filter((product) => product.productId != id);
+    window.localStorage.setItem("products", JSON.stringify(products));
+    renderOptions();
+    rendarProducts(products);
+  } else {
+  }
 }
 function editProduct(id) {
   window.location.replace(`/editProduct.html?id=${id}`);
