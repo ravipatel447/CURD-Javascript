@@ -71,11 +71,11 @@ function deleteProduct(id) {
 }
 /////////////////////////////// redirecting to editProduct.html ///////////////////////////////////
 function editProduct(id) {
-  window.location.replace(`/editProduct.html?id=${id}`);
+  window.location.replace(`editProduct.html?id=${id}`);
 }
 /////////////////////////////// redirecting to viewProduct.html ///////////////////////////////////
 function viewProduct(id) {
-  window.location.replace(`/viewProduct.html?id=${id}`);
+  window.location.replace(`viewProduct.html?id=${id}`);
 }
 /// sorting all products by (product id,product name and price) and type(asending or desending) ///
 function sortProducts(sortBy, type) {

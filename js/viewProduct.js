@@ -28,6 +28,6 @@ setData(product);
 btns.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("submit")) {
-    window.location.replace("/index.html");
+    window.location.replace("index.html");
   }
 });

@@ -59,7 +59,7 @@ btns.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target.classList.contains("cancel")) {
     // pressing cancel button
-    window.location.replace("/index.html");
+    window.location.replace("index.html");
   } else if (e.target.classList.contains("submit")) {
     // pressing submit button
     if (!a) return; // return if form validation is false
@@ -71,6 +71,6 @@ btns.addEventListener("click", (e) => {
     abc.productPrice = Number(product.productPrice);
     abc.productDesc = product.productDesc;
     window.localStorage.setItem("products", JSON.stringify(products)); // storing it to localstorage
-    window.location.replace("/index.html"); // change page
+    window.location.replace("index.html"); // change page
   }
 });
