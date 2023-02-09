@@ -7,6 +7,8 @@ const product__name = document.querySelector("#product--name");
 const product__url = document.querySelector("#product--url");
 const product__price = document.querySelector("#product--price");
 const product__description = document.querySelector("#product--Description");
+
+////////////////////////////// set product data in form ////////////////////////////
 function setData({
   productId,
   productName,
@@ -20,6 +22,7 @@ function setData({
   document.querySelector("#product--price").value = productPrice;
   document.querySelector("#product--Description").value = productDesc;
 }
+////////////////////////////// get product data for submiting form ////////////////////////////
 function getData() {
   const productId = document.querySelector("#product--id").value;
   const productName = product__name.value;
@@ -28,6 +31,7 @@ function getData() {
   const productDesc = product__description.value;
   return { productId, productName, productImageSrc, productPrice, productDesc };
 }
+////////////////////////////// checking product information validity for form  ////////////////////////////
 function checkvalidity() {
   if (!product__name.checkValidity()) {
     product__name.reportValidity();
@@ -42,27 +46,31 @@ function checkvalidity() {
   }
   return false;
 }
+////////////////////////////// fetch product form URL ///////////////////////////////////////
 const products = JSON.parse(window.localStorage.getItem("products")) || [];
 let [, pId] = window.location.search.split("=");
 pId = Number(pId);
 const [product] = products.filter((product) => product.productId === pId);
-setData(product);
+setData(product); //set data for form
 
+////////////////////////////// submit handler ///////////////////////////////////////////////
 btns.addEventListener("click", (e) => {
-  const a = checkvalidity();
+  const a = checkvalidity(); // checking validity
   e.preventDefault();
   if (e.target.classList.contains("cancel")) {
+    // pressing cancel button
     window.location.replace("/index.html");
   } else if (e.target.classList.contains("submit")) {
-    if (!a) return;
-    const product = getData();
+    // pressing submit button
+    if (!a) return; // return if form validation is false
+    const product = getData(); // get product details
     let abc = products.find((product) => product.productId === pId);
     abc.productId = Number(product.productId);
     abc.productImageSrc = product.productImageSrc;
     abc.productName = product.productName;
     abc.productPrice = Number(product.productPrice);
     abc.productDesc = product.productDesc;
-    window.localStorage.setItem("products", JSON.stringify(products));
-    window.location.replace("/index.html");
+    window.localStorage.setItem("products", JSON.stringify(products)); // storing it to localstorage
+    window.location.replace("/index.html"); // change page
   }
 });

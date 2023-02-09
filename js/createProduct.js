@@ -7,6 +7,8 @@ const product__name = document.querySelector("#product--name");
 const product__url = document.querySelector("#product--url");
 const product__price = document.querySelector("#product--price");
 const product__description = document.querySelector("#product--Description");
+
+////////////////////////////// checking product information validity for form  ////////////////////////////
 function checkvalidity() {
   if (!product__name.checkValidity()) {
     product__name.reportValidity();
@@ -21,6 +23,8 @@ function checkvalidity() {
   }
   return false;
 }
+
+////////////////////////////// get product data for submiting form ////////////////////////////
 function getData() {
   let pid = +(window.localStorage.getItem("product__id") || 0) + 1;
   window.localStorage.setItem("product__id", pid);
@@ -32,18 +36,21 @@ function getData() {
   const productDesc = product__description.value;
   return { productId, productName, productImageSrc, productPrice, productDesc };
 }
+
+////////////////////////////// submit handler ///////////////////////////////////////////////
 btns.addEventListener("click", (e) => {
-  const a = checkvalidity();
+  const a = checkvalidity(); //checking validity
   e.preventDefault();
   if (e.target.classList.contains("cancel")) {
-    window.location.replace("/index.html");
+    // cancel button pressed
+    window.location.replace("/index.html"); // change page
   } else if (e.target.classList.contains("submit")) {
-    if (!a) return;
+    if (!a) return; // return if form validation is false
     const product = getData();
     const currentProducts =
-      JSON.parse(window.localStorage.getItem("products")) || [];
-    currentProducts.push(product);
-    window.localStorage.setItem("products", JSON.stringify(currentProducts));
-    window.location.replace("/index.html");
+      JSON.parse(window.localStorage.getItem("products")) || []; // fetching current products
+    currentProducts.push(product); // add current product
+    window.localStorage.setItem("products", JSON.stringify(currentProducts)); // set all products to local storage
+    window.location.replace("/index.html"); // change page
   }
 });

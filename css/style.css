@@ -45,6 +45,8 @@ body {
   background-color: var(--color-primary);
   transform: scale(0.99);
 }
+
+/*           table css         */
 .table-wrapper {
   width: 80%;
 }
@@ -65,6 +67,8 @@ th {
   border: 1px solid hsl(205deg, 25%, 23%);
   border-radius: 8px;
 }
+
+/*             modal css        */
 .modal--createProduct {
   transition: 1s;
   /* display: none; */
@@ -131,6 +135,9 @@ input:focus {
 textarea:focus {
   outline-color: var(--color-secondary-darker);
 }
+
+/*        finished modal           */
+/*        buttons started          */
 .cancle,
 .delete {
   background: none;
@@ -153,6 +160,9 @@ textarea:focus {
 .delete {
   margin: 1px;
 }
+/*        buttons finished          */
+
+/*        table header css  started        */
 .accessibility {
   padding: 3px;
   width: 28%;
@@ -172,9 +182,12 @@ textarea:focus {
 .description {
   width: 20%;
 }
+/*        table row content        */
 .capitalize {
   text-transform: capitalize;
 }
+
+/* filter by product id and product name */
 .filter {
   display: flex;
   width: 100%;
@@ -197,6 +210,9 @@ textarea:focus {
   border: 1px solid var(--color-primary);
   border-radius: 5px;
 }
+/* filter by product id and product name finished */
+
+/* product img for viewing in view product */
 #product--img {
   border: 2px solid var(--color-secondary-darker);
   border-radius: 5px;
