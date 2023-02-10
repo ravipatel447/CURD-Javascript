@@ -21,8 +21,8 @@ const renderRow = ({
   var html = `<tr>
     <td>${productId}</td>
     <td class="capitalize">${productName}</td>
-    <td>
-        <img src="${productImageSrc}"/>
+    <td class="table--td--img">
+        <img class="table--img" src="${productImageSrc}"/>
     </td>
     <td>${productPrice}$</td>
     <td class="capitalize">${productDesc}</td>

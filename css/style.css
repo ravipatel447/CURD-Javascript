@@ -186,6 +186,14 @@ textarea:focus {
 .capitalize {
   text-transform: capitalize;
 }
+.table--td--img {
+  width: 20%;
+}
+.table--img {
+  height: 150px;
+  width: 260px;
+}
+/*        table row content        */
 
 /* filter by product id and product name */
 .filter {
@@ -216,6 +224,6 @@ textarea:focus {
 #product--img {
   border: 2px solid var(--color-secondary-darker);
   border-radius: 5px;
-  width: 160px;
-  height: 160px;
+  height: 150px;
+  width: 260px;
 }
